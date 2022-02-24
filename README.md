@@ -37,6 +37,19 @@ $ ./cluster_up.sh
 $ vagrant ssh node[1-3]
 ```
 
+## Clean up 
+```
+$ vagrant destroy
+```
+
 # Limitations
 Multipass for MacOS on M1 does not currently support network management. 
 https://github.com/canonical/multipass/issues/2424
+
+# Troubleshooting
+In some cases `vagrant` might not be able to bring up all three nodes. This results in some `multipass` vm's running (less then 3) while `vagrant destroy` won't be able to do a proper cleanup. To remove the *stale* vm's list, delete and then purge them.
+```
+$ multipass info --all
+$ multipass delete <nodename>
+$ multipass purge
+```
