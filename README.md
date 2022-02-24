@@ -17,24 +17,24 @@ Please do not use this for production employments. This is for lab/testing purpo
 - [Vault Enterprise License](https://www.vaultproject.io/docs/enterprise/license) (In case you want install the Enterprise vesion)
 
 # Usage
-1. Clone the project
+## Clone the project
 ```
-git clone https://github.com/kwagga/vavamu
-cd vavamu
+$ git clone https://github.com/kwagga/vavamu
+$ cd vavamu
 ```
-2. Setup OSS or Enterprise
+## Setup OSS or Enterprise
    - For OSS run: `sed  -i "" 's/vault-enterprise/vault/g' Vagrantfile`
    - For Enterprise populate `vault.hclic` with your license.
 
-3. Fire up the vm's and bring up the cluster
+## Fire up the vm's and bring up the cluster
 ```
-vagrant up
-./cluster_up.sh
+$ vagrant up
+$ ./cluster_up.sh
 
 ```
-4. Once the cluster is up the nodes can be accessed with `vagrant`:
+## Once the cluster is up the nodes can be accessed with `vagrant`:
 ```
-vagrant ssh node[1-3]
+$ vagrant ssh node[1-3]
 ```
 
 # Limitations
