@@ -44,7 +44,7 @@ storage "raft" {
 	path = "/opt/vault/data"
 
 	retry_join {
-   leader_api_addr = "http://node1:8200"
+          leader_api_addr = "http://node1:8200"
 	}
 	retry_join {
 	  leader_api_addr = "http://node2:8200"
