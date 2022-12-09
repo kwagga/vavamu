@@ -12,7 +12,7 @@ sudo apt-get install -qq curl jq unzip
 echo "Installing Vault Enterprise ..."
 curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
 sudo apt-add-repository "deb https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-sudo apt-get install -qq vault-enterprise
+sudo apt-get install -qq vault-enterprise=1.11.3+ent-1
 sudo systemctl enable vault.service
 
 echo "Setting VAULT_ADDR environment variable ..."
@@ -36,7 +36,7 @@ sudo mv /etc/vault.d/vault.hcl /etc/vault.d/vault_hcl.old
 tee /etc/vault.d/vault.hcl << EOF
 
 ui = true
-mlock = false
+disable_mlock = true
 cluster_addr  = "http://$IPADDRESS:8201"
 api_addr      = "http://$IPADDRESS:8200"
 
@@ -83,7 +83,7 @@ Vagrant.configure("2") do |config|
     config.vm.provider "multipass" do |multipass,override|
         multipass.hd_size = "10G"
         multipass.cpu_count = 1
-        multipass.memory_mb = 1024
+        multipass.memory_mb = 2048
         multipass.image_name = "focal"
     end
     end
